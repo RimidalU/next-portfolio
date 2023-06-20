@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+	font-size: 20px;
+}
+
+html,
+body {
+	@apply w-screen h-screen bg-neutral-950 text-neutral-300 truncate;
+}
+
+a {
+	@apply no-underline text-inherit hover:text-orange-700;
+}
+
+.container {
+	@apply max-w-screen-xl h-screen my-0 mx-auto py-0 px-16 flex flex-col justify-between;
+}
+
+main {
+	@apply max-w-full h-screen;
+}
