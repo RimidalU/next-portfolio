@@ -41,11 +41,11 @@ export function Header() {
 			</Link>
 			<nav className="flex items-center gap-5">
 				{links.map((link) => (
-					<Link key={link.id} href={link.url} className="">
+					<Link key={link.id} href={link.url} className="flex">
 						{link.title}
 					</Link>
 				))}
-				<button className="p-2 bg-emerald-800 rounded-md">LogOut</button>
+				<button>LogOut</button>
 			</nav>
 		</header>
 	);
