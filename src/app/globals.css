@@ -8,11 +8,11 @@ html {
 
 html,
 body {
-	@apply w-screen h-screen bg-neutral-950 text-neutral-300 truncate;
+	@apply w-screen h-screen bg-neutral-950 text-neutral-300 ;
 }
 
 a {
-	@apply no-underline text-inherit hover:text-orange-700;
+	@apply no-underline text-inherit hover:text-orange-700 hover:underline underline-offset-8 decoration-emerald-800;
 }
 
 .container {
@@ -20,5 +20,9 @@ a {
 }
 
 main {
-	@apply max-w-full h-screen;
+	@apply max-w-full h-screen overflow-y-auto;
+}
+
+button{
+	@apply py-1 px-3 bg-emerald-800 rounded-md border-2 border-emerald-800 hover:bg-transparent hover:border-orange-700 hover:rounded-2xl
 }
