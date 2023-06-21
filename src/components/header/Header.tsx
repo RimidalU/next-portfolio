@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Button } from "../button/Button";
 
 const links = [
 	{
@@ -45,7 +46,7 @@ export function Header() {
 						{link.title}
 					</Link>
 				))}
-				<button>LogOut</button>
+				<Button text="LogOut" />
 			</nav>
 		</header>
 	);
