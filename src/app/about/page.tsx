@@ -38,6 +38,9 @@ export default function About() {
 						quasi architecto, accusamus quibusdam tenetur? Aperiam culpa impedit fugit quaerat ut incidunt amet
 						quod ducimus commodi.
 					</p>
+					<Link href="contacts" className="hover:no-underline mt-3 self-center">
+						<button>Contacts</button>
+					</Link>
 				</article>
 				<article className="flex-1 flex flex-col gap-5">
 					<h2 className="text-3xl bold capitalize">what I do?</h2>
