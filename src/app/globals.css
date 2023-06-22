@@ -8,7 +8,7 @@ html {
 
 html,
 body {
-	@apply w-screen h-screen bg-neutral-950 text-neutral-300 ;
+	@apply w-screen h-screen bg-neutral-950 text-neutral-300;
 }
 
 a {
@@ -23,6 +23,25 @@ main {
 	@apply max-w-full h-screen overflow-y-auto;
 }
 
-button{
-	@apply py-1 px-3 bg-emerald-800 rounded-md border-2 border-emerald-800 hover:bg-transparent hover:border-orange-700 hover:rounded-2xl
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+	@apply self-center py-1 px-3 bg-emerald-800 rounded-md border-2 border-emerald-800 hover:bg-transparent hover:border-orange-700 hover:rounded-2xl;
+}
+
+form {
+	@apply my-0 mx-auto flex flex-col gap-4 w-11/12;
+}
+
+input,
+textarea {
+	@apply px-3 py-2 bg-white text-emerald-800 border-2 border-neutral-300 rounded-md text-sm placeholder-neutral-300   
+	focus:outline-none focus:border-emerald-800 
+	invalid:text-orange-700
+	focus:invalid:border-orange-700 focus:invalid:text-orange-700;
+}
+
+label {
+	@apply text-xl italic;
 }
