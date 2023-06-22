@@ -1,19 +1,38 @@
 "use client";
 
 import { FormEvent } from "react";
-import { Button } from "../button/Button";
+import { z } from "zod";
+
+import { Button } from "@/components/button/Button";
+
+const contactFormSchema = z.object({
+	email: z.string().email(),
+	message: z.string(),
+});
 
 export function ContactForm() {
 	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		console.log(event);
+
+		try {
+			const formData = new FormData(event.currentTarget);
+
+			const feedback = contactFormSchema.parse({
+				email: formData.get("email"),
+				message: formData.get("message"),
+			});
+			console.log(feedback);
+			
+		} catch (error) {
+			console.warn("LoginForm", error);
+		}
 	};
 
 	return (
 		<form className="" onSubmit={handleSubmit}>
 			<h1 className="text-3xl bold capitalize">Quick contact with me:</h1>
 			<h3 className="text-lg italic">
-			I am always open to interesting suggestions and constructive feedback. :)
+				I am always open to interesting suggestions and constructive feedback. :)
 			</h3>
 
 			<label htmlFor="email">Your email:</label>
