@@ -30,7 +30,7 @@ export function ContactForm() {
 
 	return (
 		<form className="" onSubmit={handleSubmit}>
-			<h1 className="text-3xl bold capitalize">Quick contact with me:</h1>
+			<h1 className="title-text">Quick contact with me:</h1>
 			<h3 className="text-lg italic">
 				I am always open to interesting suggestions and constructive feedback. :)
 			</h3>

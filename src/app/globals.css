@@ -45,3 +45,9 @@ textarea {
 label {
 	@apply text-xl italic;
 }
+
+@layer components {
+	.title-text {
+		@apply text-3xl capitalize;
+	}
+}

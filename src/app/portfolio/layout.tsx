@@ -6,7 +6,7 @@ export default function PortfolioLayout({ children }: { children: React.ReactNod
 	return (
 		<div>
 			<header>
-				<h1 className="">My projects</h1>  
+				<h1 className="title-text">My projects</h1>  
 			</header>
 			{children}
 		</div>

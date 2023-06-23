@@ -22,7 +22,7 @@ export default function About() {
 			</div>
 			<section className="flex gap-10 text-justify">
 				<article className="flex-1 flex flex-col gap-5	">
-					<h2 className="text-3xl bold capitalize">who am I?</h2>
+					<h2 className="title-text">who am I?</h2>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum optio error sint cupiditate quos
 						quidem, eligendi necessitatibus fuga dolorum vero.
@@ -43,7 +43,7 @@ export default function About() {
 					</Link>
 				</article>
 				<article className="flex-1 flex flex-col gap-5">
-					<h2 className="text-3xl bold capitalize">what I do?</h2>
+					<h2 className="title-text">what I do?</h2>
 					<p>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Error reiciendis et iusto adipisci
 						voluptate delectus veniam, nesciunt cupiditate earum quam iste facere unde laudantium vel.
