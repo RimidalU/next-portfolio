@@ -50,4 +50,7 @@ label {
 	.title-text {
 		@apply text-3xl capitalize;
 	}
+	.paint-stroke {
+		@apply absolute bottom-4 left-4 p-2 pr-16 italic text-lg bg-gradient-to-r from-emerald-800 from-75%;
+	}
 }

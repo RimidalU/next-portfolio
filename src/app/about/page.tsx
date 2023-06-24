@@ -6,16 +6,16 @@ export default function About() {
 		<section className="flex flex-col flex-1 gap-5">
 			<div className="w-full h-64 relative">
 				<Image
-					src="/etretat3-rem3.jpg"
+					src="/etretat.jpg"
 					alt="My Étretat"
 					className="dark:invert object-contain"
 					fill={true}
 				/>
 				<blockquote
-					className="absolute bottom-4 left-4 p-2 italic text-lg bg-gradient-to-r from-emerald-800 from-75%"
+					className="paint-stroke"
 					cite="@Me)"
 				>
-					<h1 className="pr-20">
+					<h1>
 						&quot;If nothing happens, then something needs to be done about it...&quot;
 					</h1>
 				</blockquote>
