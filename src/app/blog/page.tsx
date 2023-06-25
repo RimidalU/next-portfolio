@@ -25,7 +25,7 @@ export default function Blog() {
 			image: "/web.jpg",
 		},
 		{
-			id: 2,
+			id: 3,
 			title: "Cats",
 			subtitle: "Cats vs dogs",
 			description:
