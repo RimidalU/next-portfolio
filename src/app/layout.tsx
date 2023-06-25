@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		<html lang="en">
 			<body className={`${inter.className} container`}>
 				<Header />
-				<main className="max-">{children}</main>
+				<main className="no-scrollbar">{children}</main>
 				<Footer />
 			</body>
 		</html>
