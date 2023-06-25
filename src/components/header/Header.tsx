@@ -1,4 +1,6 @@
 import Link from "next/link";
+
+import { DarkModeToggle } from "../darkModeToggle/DarkModeToggle";
 import { Button } from "../button/Button";
 
 const links = [
@@ -41,6 +43,7 @@ export function Header() {
 				RimidalU
 			</Link>
 			<nav className="flex items-center gap-5">
+				<DarkModeToggle />
 				{links.map((link) => (
 					<Link key={link.id} href={link.url} className="flex">
 						{link.title}
