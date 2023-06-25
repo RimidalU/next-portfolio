@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 export function ProjectCard({ data }: any) {
 	return (
@@ -9,7 +9,7 @@ export function ProjectCard({ data }: any) {
 					<Image
 						src="/implementations.jpg"
 						alt="Project"
-						className="dark:invert object-cover border-4 rounded-lg border-emerald-800"
+						className="object-cover border-4 rounded-lg border-emerald-800"
 						fill={true}
 					/>
 					<h2 className="paint-stroke">{data.name}</h2>

@@ -8,7 +8,7 @@ export default function About() {
 				<Image
 					src="/etretat.jpg"
 					alt="My Étretat"
-					className="dark:invert object-contain"
+					className="object-contain"
 					fill={true}
 				/>
 				<blockquote

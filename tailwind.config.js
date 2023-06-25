@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+	darkMode: "class",
 	content: [
 		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,12 +14,12 @@ module.exports = {
 			},
 			keyframes: {
 				translateY: {
-					"from": { transform: "translateY(-15px)" },
-					"to": { transform: "translateY(0) scale(0.97)" },
+					from: { transform: "translateY(-15px)" },
+					to: { transform: "translateY(0)" },
 				},
 			},
 			animation: {
-				translateY: "translateY 3s ease-in-out infinite alternate",
+				translateY: "translateY 1s ease-in-out infinite alternate",
 			},
 		},
 	},
