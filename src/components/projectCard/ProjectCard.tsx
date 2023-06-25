@@ -24,10 +24,10 @@ export function ProjectCard({ data }: any) {
 					})}
 				</ul>
 				<div className="flex justify-around">
-					<Link href={data.github}>
+					<Link href={data.github} target="_blank">
 						<button>View in GitHab</button>
 					</Link>
-					<Link href={data.liveDemo}>
+					<Link href={data.liveDemo} target="_blank">
 						<button>Live Demo</button>
 					</Link>
 				</div>
