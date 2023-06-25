@@ -15,7 +15,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
 	return (
 		<ThemeContext.Provider value={{ handleDarkMode, mode }}>
-			<html lang="en" className={mode}>
+			<html lang="en" className={`${mode} mdl-js`}>
 				{children}
 			</html>
 		</ThemeContext.Provider>
