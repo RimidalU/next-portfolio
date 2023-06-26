@@ -13,8 +13,6 @@ export const GET = async (_: any, { params }: Props) => {
 		await connect();
 
 		const post = await Post.findById(params.id);
-        console.log(post);
-        
 
 		return new NextResponse(JSON.stringify(post), { status: 200 });
 	} catch (error) {

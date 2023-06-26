@@ -9,7 +9,6 @@ type Props = {
 
 async function getData(id: string) {
 	const res = await fetch(`${process.env.HOST_URL}api/posts/${id}`, { cache: "no-store" });
-	console.log(res);
 
 	if (!res.ok) {
 		throw new Error("Filed to fetch data");
