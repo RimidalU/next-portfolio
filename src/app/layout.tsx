@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 
+import { AuthProvider } from "@/components/authProvider/AuthProvider";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { Header } from "@/components/header/Header";
 import { Footer } from "@/components/footer/Footer";
@@ -19,13 +20,15 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<ThemeProvider>
-			<body
-				className={`${inter.className} container bg-neutral-950 text-neutral-300  dark:bg-neutral-300 dark:text-neutral-900 duration-1000`}
-			>
-				<Header />
-				<main className="no-scrollbar">{children}</main>
-				<Footer />
-			</body>
+			<AuthProvider>
+				<body
+					className={`${inter.className} container bg-neutral-950 text-neutral-300  dark:bg-neutral-300 dark:text-neutral-900 duration-1000`}
+				>
+					<Header />
+					<main className="no-scrollbar">{children}</main>
+					<Footer />
+				</body>
+			</AuthProvider>
 		</ThemeProvider>
 	);
 }
