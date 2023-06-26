@@ -6,7 +6,6 @@ import { IPost } from "@/types";
 async function getData() {
 	
 	const res = await fetch(`${process.env.HOST_URL}api/posts`, { cache: "no-store" });
-	console.log(res);
 
 	if (!res.ok) {
 		throw new Error("Filed to fetch data");
@@ -15,7 +14,7 @@ async function getData() {
 }
 
 export default async function Blog() {
-	const posts: IPost[] = await getData()
+	const posts: Partial<IPost>[] = await getData()
 
 	return (
 		<section className="flex flex-col flex-1 gap-5 px-3 items-center">

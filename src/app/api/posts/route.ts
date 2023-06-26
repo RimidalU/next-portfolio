@@ -7,7 +7,7 @@ export const GET = async () => {
 		await connect();
 
 		const posts = await Post.find()
-			.select(["_id", "title", "subtitle", "description", "createdAt"])
+			.select(["_id", "title", "subtitle", "description", "image"])
 			// .skip(offset)                               //TODO: Add pagination
 			// .limit(count)
 			.lean();
