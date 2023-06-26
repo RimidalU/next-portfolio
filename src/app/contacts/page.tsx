@@ -20,6 +20,10 @@ const contactLinks = [
 	},
 ];
 
+export const metadata = {
+	title: "Uladzimir Stankevich - Portfolio. | Contacts",
+};
+
 export default function Contacts() {
 	return (
 		<section className="flex flex-col flex-1 gap-5 h-full">

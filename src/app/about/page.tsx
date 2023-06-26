@@ -1,6 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
+export const metadata = {
+	title: "Uladzimir Stankevich - Portfolio. | About",
+};
+
 export default function About() {
 	return (
 		<section className="flex flex-col flex-1 gap-5">

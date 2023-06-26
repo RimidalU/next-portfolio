@@ -17,6 +17,13 @@ async function getData(id: string) {
 	return res.json();
 }
 
+export async function generateMetadata({ params }: Props) {
+	const post: IPost = await getData(params.id);
+	return {
+		title: `Uladzimir Stankevich - Portfolio. | Blog | ${post.title}`,
+	};
+}
+
 export default async function BlogPost({ params }: Props) {
 	const post: IPost = await getData(params.id);
 

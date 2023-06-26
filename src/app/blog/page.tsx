@@ -13,6 +13,10 @@ async function getData() {
 	return res.json();
 }
 
+export const metadata = {
+	title: "Uladzimir Stankevich - Portfolio. | Blog",
+};
+
 export default async function Blog() {
 	const posts: Partial<IPost>[] = await getData()
 
