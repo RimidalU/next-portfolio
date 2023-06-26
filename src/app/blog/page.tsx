@@ -22,7 +22,7 @@ export default async function Blog() {
 			<ul className="w-full h-42 overflow-y-scroll no-scrollbar">
 				{posts.map((post) => {
 					return (
-						<Link key={post._id} href={`blog/${post.title}`}>
+						<Link key={post._id} href={`blog/${post._id}`}>
 							<ShortPostCard data={post} />
 						</Link>
 					);
