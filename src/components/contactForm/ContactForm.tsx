@@ -57,7 +57,7 @@ export function ContactForm() {
 				minLength={5}
 				required
 			></textarea>
-			<Button text="Send" type="submit" />
+			<Button text="Send" type="submit" variant="none"/>
 		</form>
 	);
 }

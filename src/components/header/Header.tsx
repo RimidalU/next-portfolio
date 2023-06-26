@@ -49,7 +49,7 @@ export function Header() {
 						{link.title}
 					</Link>
 				))}
-				<Button type="button" text="LogOut" />
+				<Button text="LogOut" variant="logOut"/>
 			</nav>
 		</header>
 	);
