@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { z } from "zod";
 
 const registerFormSchema = z.object({
@@ -14,6 +14,15 @@ export function LoginForm() {
 	const [error, setError] = useState(false);
 
 	const router = useRouter();
+	const session = useSession();
+
+	if (session.status === "loading") {
+		return <p> Loading ... </p>;
+	}
+
+	if (session.status === 'authenticated') {
+		router?.push("/dashboard");
+	}
 
 	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
