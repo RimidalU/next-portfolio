@@ -1,14 +1,14 @@
-import User from "@/models/User";
-import connect from "@/utils/db";
-import bcrypt from "bcryptjs";
+import User from "@/models/User.model";
+import { connect } from "@/utils/mongodb";
+import { hash } from 'bcrypt';
 import { NextResponse } from "next/server";
 
-export const POST = async (request) => {
+export const POST = async (request: Request) => {
   const { name, email, password } = await request.json();
 
   await connect();
 
-  const hashedPassword = await bcrypt.hash(password, 5);
+  const hashedPassword = await hash(password, 10);
 
   const newUser = new User({
     name,
@@ -22,7 +22,7 @@ export const POST = async (request) => {
       status: 201,
     });
   } catch (err) {
-    return new NextResponse(err.message, {
+    return new NextResponse('User not created', {
       status: 500,
     });
   }
