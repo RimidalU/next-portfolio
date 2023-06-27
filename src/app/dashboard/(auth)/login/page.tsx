@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { LoginForm } from "@/components/loginForm/LoginForm";
-import { Button } from "@/components/button/Button";
+import { ButtonGoogle } from "@/components/buttonGoogle/ButtonGoogle";
 
 export default function Login() {
 	return (
@@ -13,7 +13,7 @@ export default function Login() {
 			<div className="w-full max-w-xs self-center">
 				<LoginForm />
 			</div>
-			<Button text="Login with Google" variant="loginGoogle"></Button>
+			<ButtonGoogle/>
 			<h3>If you have already registered in the system, you will log in with your account.</h3>
 			<Link href={"/dashboard/register"}>
 				<span className="">register here</span>

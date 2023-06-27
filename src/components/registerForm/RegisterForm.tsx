@@ -4,8 +4,6 @@ import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { z } from "zod";
 
-import { Button } from "@/components/button/Button";
-
 const registerFormSchema = z.object({
 	name: z.string(),
 	email: z.string().email(),
@@ -68,7 +66,7 @@ export function RegisterForm() {
 				minLength={5}
 				required
 			/>
-			<Button text="Register" type="submit" variant="none" />
+			<button type="submit">Register</button>
 		</form>
 	);
 }

@@ -5,8 +5,6 @@ import { FormEvent, useState } from "react";
 import { signIn } from "next-auth/react";
 import { z } from "zod";
 
-import { Button } from "@/components/button/Button";
-
 const registerFormSchema = z.object({
 	email: z.string().email(),
 	password: z.string(),
@@ -61,7 +59,7 @@ export function LoginForm() {
 				minLength={5}
 				required
 			/>
-			<Button text="Login" type="submit" variant="none" />
+			<button type="submit">Login</button>
 		</form>
 	);
 }

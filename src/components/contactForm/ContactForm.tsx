@@ -3,8 +3,6 @@
 import { FormEvent } from "react";
 import { z } from "zod";
 
-import { Button } from "@/components/button/Button";
-
 const contactFormSchema = z.object({
 	email: z.string().email(),
 	message: z.string(),
@@ -22,7 +20,6 @@ export function ContactForm() {
 				message: formData.get("message"),
 			});
 			console.log(feedback);
-			
 		} catch (error) {
 			console.warn("LoginForm", error);
 		}
@@ -57,7 +54,7 @@ export function ContactForm() {
 				minLength={5}
 				required
 			></textarea>
-			<Button text="Send" type="submit" variant="none"/>
+			<button type="submit">Send</button>
 		</form>
 	);
 }
