@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { z } from "zod";
 
@@ -14,6 +15,8 @@ const registerFormSchema = z.object({
 export function RegisterForm() {
 	const [error, setError] = useState(false);
 
+	const router = useRouter();
+
 	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
@@ -25,18 +28,24 @@ export function RegisterForm() {
 				email: formData.get("email"),
 				password: formData.get("password"),
 			});
-			console.log(feedback);
+
+			const res = await fetch("/api/auth/register", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(feedback),
+			});
+			res.status === 201 && router.push("/dashboard/login?success=Account has been created");
 		} catch (error) {
 			setError(true);
-			console.warn("LoginForm", error);
 		}
 	};
 
 	return (
 		<form className="shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
+			{error && <span className="text-orange-700">Something went wrong!</span>}
 
-			{error && <span className="text-orange-700">Check the entered data!</span>}
-			
 			<label htmlFor="email">Your name:</label>
 			<input type="text" name="name" id="name" placeholder="Enter your name." minLength={3} required />
 
