@@ -21,7 +21,7 @@ export function LoginForm() {
 		if (session.status === "authenticated") {
 			router?.push("/dashboard");
 		}
-	}, []);
+	}, [router, session.status]);
 
 	if (session.status === "loading") {
 		return <p> Loading ... </p>;
@@ -41,7 +41,7 @@ export function LoginForm() {
 			const res = await signIn("credentials", {
 				...feedback,
 				redirect: true,
-				callbackUrl: "/",
+				callbackUrl: "/dashboard/",
 			});
 		} catch (error) {
 			setError(true);

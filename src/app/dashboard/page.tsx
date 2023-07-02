@@ -13,7 +13,7 @@ export default function Dashboard() {
 		if (session.status === "unauthenticated") {
 			router.push("/dashboard/login");
 		}
-	}, []);
+	}, [router, session.status]);
 
 	if (session.status === "loading") {
 		return <p> Loading ... </p>;
