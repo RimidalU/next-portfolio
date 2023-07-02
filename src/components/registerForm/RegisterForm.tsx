@@ -1,7 +1,8 @@
 "use client";
 
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { z } from "zod";
 
 const registerFormSchema = z.object({
@@ -14,6 +15,18 @@ export function RegisterForm() {
 	const [error, setError] = useState(false);
 
 	const router = useRouter();
+	const session = useSession();
+
+	useEffect(() => {
+		//https://stackoverflow.com/questions/62336340/cannot-update-a-component-while-rendering-a-different-component-warning
+		if (session.status === "authenticated") {
+			router?.push("/dashboard");
+		}
+	}, [router, session.status]);
+
+	if (session.status === "loading") {
+		return <p> Loading ... </p>;
+	}
 
 	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
