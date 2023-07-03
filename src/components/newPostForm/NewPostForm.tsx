@@ -1,36 +1,55 @@
 "use client";
 
-import { FormEvent } from "react";
+import { useSession } from "next-auth/react";
+import { FormEvent, useState } from "react";
 import { z } from "zod";
 
 const newPostFormSchema = z.object({
 	title: z.string().nonempty(),
 	subtitle: z.string(),
 	description: z.string().nonempty(),
-	image: z.string().nullable(),	
+	image: z.custom<File>(), // https://github.com/colinhacks/zod/issues/387
 });
 
 export function NewPostForm() {
+	const [error, setError] = useState(false);
+
+	const session = useSession();
+
 	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
 		try {
 			const formData = new FormData(event.currentTarget);
+			const uploadFile = formData.get("image") as File;
 
-			const feedback = newPostFormSchema.parse({
+			const newPost = newPostFormSchema.parse({
 				title: formData.get("title"),
 				subtitle: formData.get("subtitle"),
 				description: formData.get("description"),
-				image: formData.get("image"),
+				image: `/${uploadFile.name}`,
 			});
-			console.log(feedback);
+
+			const res = await fetch("/api/posts/", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					...newPost,
+					author: session.data?.user?.email,
+				}),
+			});
+			res.status === 201 && console.log(res);
 		} catch (error) {
-			console.warn("NewPostFormSchema", error);
+			setError(true);
 		}
 	};
 
 	return (
 		<form className="" onSubmit={handleSubmit}>
+			{error && <span className="text-orange-700">Something went wrong!</span>}
+
 			<h1 className="title-text">new post</h1>
 
 			<blockquote className="border-l-2 border-current italic my-3 pl-4 md:pl-8 py-2 mx-4 md:mx-10 max-w-md">
@@ -69,7 +88,7 @@ export function NewPostForm() {
 			></textarea>
 
 			<label htmlFor="image">Post image:</label>
-			<input type="file" name="image" id="image" disabled />
+			<input type="file" name="image" id="image" />
 			<span className="italic">* A post without a picture is “dry” and “boring”...</span>
 
 			<button type="submit">Add The Post</button>
