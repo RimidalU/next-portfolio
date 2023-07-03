@@ -18,16 +18,18 @@ const PostSchema = new Schema(
 		},
 		author: {
 			// TODO: add link to User entity
+			// 	type: Schema.Types.ObjectId,
+			// 	ref: "User",
 			type: String,
 			require: true,
 		},
 		image: {
 			//TODO implement img loading
 			type: String,
-			require: true,
+			// require: true,
 		},
 	},
 	{ timestamps: true }
 );
 
-export default mongoose.models["Post"] || mongoose.model("Post", PostSchema);  //https://stackoverflow.com/questions/59851947/now-mongoose-cannot-overwrite-model-once-compiled
+export default mongoose.models["Post"] || mongoose.model("Post", PostSchema); //https://stackoverflow.com/questions/59851947/now-mongoose-cannot-overwrite-model-once-compiled
