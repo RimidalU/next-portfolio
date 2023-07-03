@@ -1,19 +1,21 @@
 "use client";
 
-import { IPost } from "@/types";
+import { useSession } from "next-auth/react";
 import useSWR, { Fetcher } from "swr";
+
 import { ShortPostCard } from "../shortPostCard/ShortPostCard";
+import { IPost } from "@/types";
 
 export function PostSet() {
+	const session = useSession();
+
 	const fetcher: Fetcher<IPost[], string> = (...args) => fetch(...args).then((res) => res.json());
 
 	const { data, mutate, error, isLoading } = useSWR(
-		`/api/posts`,
-
-		//   `/api/posts?username=${session?.data?.user.name}`,
+		`/api/posts?email=${session?.data?.user?.email}`,
 		fetcher
 	);
-
+	
 	return (
 		<nav className="flex flex-col items-center">
 			{!data?.length && (
