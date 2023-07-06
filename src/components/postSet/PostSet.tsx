@@ -15,10 +15,13 @@ export function PostSet() {
 		`/api/posts?email=${session?.data?.user?.email}`,
 		fetcher
 	);
-	
+
 	return (
+		
 		<nav className="flex flex-col items-center">
-			{!data?.length && (
+			{isLoading && <p> Loading ... </p>}
+
+			{!data?.length && !isLoading && (
 				<>
 					<span className="text-xl normal-case">You have no published posts.</span>
 					<span className="text-lg normal-case">Let&apos;s fix this!</span>
