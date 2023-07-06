@@ -2,6 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { FormEvent, useState } from "react";
+import useSWR from "swr";
 import { z } from "zod";
 
 const newPostFormSchema = z.object({
@@ -11,16 +12,23 @@ const newPostFormSchema = z.object({
 	image: z.custom<File>(), // https://github.com/colinhacks/zod/issues/387
 });
 
+// https://freshman.tech/snippets/typescript/fix-value-not-exist-eventtarget/
+type HTMLElementEvent<T extends HTMLElement> = FormEvent<HTMLFormElement> & {
+	target: T;
+};
+
 export function NewPostForm() {
 	const [error, setError] = useState(false);
 
 	const session = useSession();
 
-	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+	const { mutate } = useSWR(`/api/posts?email=${session?.data?.user?.email}`);
+
+	const handleSubmit = async (event: HTMLElementEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
 		try {
-			const formData = new FormData(event.currentTarget);
+			let formData = new FormData(event.currentTarget);
 			const uploadFile = formData.get("image") as File;
 
 			const newPost = newPostFormSchema.parse({
@@ -41,6 +49,10 @@ export function NewPostForm() {
 				}),
 			});
 			res.status === 201 && console.log(res);
+
+			mutate();
+
+			event.target.reset();
 		} catch (error) {
 			setError(true);
 		}

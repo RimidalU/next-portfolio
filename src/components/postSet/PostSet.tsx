@@ -17,8 +17,7 @@ export function PostSet() {
 	);
 
 	return (
-		
-		<nav className="flex flex-col items-center">
+		<>
 			{isLoading && <p> Loading ... </p>}
 
 			{!data?.length && !isLoading && (
@@ -28,7 +27,13 @@ export function PostSet() {
 				</>
 			)}
 
-			{data && data.map((post) => <ShortPostCard key={post._id} data={post} />)}
-		</nav>
+			{data &&
+				data.map((post) => (
+					<div key={post._id} className="relative border-4 rounded-lg border-emerald-800">
+						<span className="text-red-500 font-black text-5xl absolute right-0 bottom-16 cursor-pointer ">X</span>
+						<ShortPostCard data={post} />
+					</div>
+				))}
+		</>
 	);
 }
