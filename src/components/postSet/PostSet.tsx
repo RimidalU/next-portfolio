@@ -17,7 +17,7 @@ export function PostSet() {
 	);
 
 	return (
-		<>
+		<article className="flex-1 flex flex-col gap-14 title-text overflow-y-auto no-scrollbar ">
 			{isLoading && <p> Loading ... </p>}
 
 			{!data?.length && !isLoading && (
@@ -28,12 +28,14 @@ export function PostSet() {
 			)}
 
 			{data &&
-				data.map((post) => (
+				data.reverse().map((post) => (
 					<div key={post._id} className="relative border-4 rounded-lg border-emerald-800">
-						<span className="text-red-500 font-black text-5xl absolute right-0 bottom-16 cursor-pointer ">X</span>
+						<span className="text-red-500 font-black text-5xl absolute right-0 bottom-16 cursor-pointer ">
+							X
+						</span>
 						<ShortPostCard data={post} />
 					</div>
 				))}
-		</>
+		</article>
 	);
 }
