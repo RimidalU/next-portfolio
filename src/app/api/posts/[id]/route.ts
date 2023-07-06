@@ -19,3 +19,16 @@ export const GET = async (_: any, { params }: Props) => {
 		return new NextResponse(`Database error${error}`, { status: 500 });
 	}
 };
+
+
+export const DELETE = async (_: any, { params }: Props) => {
+	try {
+		await connect();
+
+		await Post.findByIdAndDelete(params.id);
+
+		return new NextResponse('Post has deleted', { status: 204 });
+	} catch (error) {
+		return new NextResponse(`Database error${error}`, { status: 500 });
+	}
+};
