@@ -4,7 +4,6 @@ import { ShortPostCard } from "@/components/shortPostCard/ShortPostCard";
 import { IPost } from "@/types";
 
 async function getData() {
-	
 	const res = await fetch(`${process.env.HOST_URL}api/posts`, { cache: "no-store" });
 
 	if (!res.ok) {
@@ -18,15 +17,19 @@ export const metadata = {
 };
 
 export default async function Blog() {
-	const posts: Partial<IPost>[] = await getData()
+	const posts: Partial<IPost>[] = await getData();
 
 	return (
-		<section className="flex flex-col flex-1 gap-5 px-3 items-center">
+		<section className="flex flex-col flex-1 gap-5 items-center">
 			<h2 className="title-text">thoughts and useful things that I would like to keep.</h2>
-			<ul className="w-full h-42 overflow-y-scroll no-scrollbar">
+			<ul className="w-full overflow-y-scroll no-scrollbar flex flex-col-reverse gap-7">
 				{posts.map((post) => {
 					return (
-						<Link key={post._id} href={`blog/${post._id}`}>
+						<Link
+							className="hover:bg-neutral-200 dark:hover:bg-neutral-800 border-4 rounded-r-lg hover:rounded-r-3xl border-emerald-800"
+							key={post._id}
+							href={`blog/${post._id}`}
+						>
 							<ShortPostCard data={post} />
 						</Link>
 					);

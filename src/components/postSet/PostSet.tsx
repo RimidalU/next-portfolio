@@ -14,13 +14,10 @@ export function PostSet() {
 
 	const fetcher: Fetcher<IPost[], string> = (...args) => fetch(...args).then((res) => res.json());
 
-	const { data, isLoading } = useSWR(
-		`/api/posts?email=${session?.data?.user?.email}`,
-		fetcher
-	);
+	const { data, isLoading } = useSWR(`/api/posts?email=${session?.data?.user?.email}`, fetcher);
 
 	const { mutate } = useSWR(`/api/posts?email=${session?.data?.user?.email}`);
-	
+
 	const handleRemove = async (id: string) => {
 		try {
 			await fetch(`/api/posts/${id}`, {
@@ -34,28 +31,29 @@ export function PostSet() {
 	};
 
 	return (
-		<article className="flex-1 flex flex-col gap-14 title-text overflow-y-auto no-scrollbar ">
-			{errorMessage && <span className="text-orange-700">Something went wrong!</span>}
+		<article className="flex-1 flex flex-col gap-4 overflow-y-auto no-scrollbar ">
+			{errorMessage && <span className="text-orange-700 title-text">Something went wrong!</span>}
 
-			{isLoading && <p> Loading ... </p>}
+			{isLoading && <p className="title-text"> Loading ... </p>}
 
 			{!data?.length && !isLoading && (
 				<>
-					<span className="text-xl normal-case">You have no published posts.</span>
-					<span className="text-lg normal-case">Let&apos;s fix this!</span>
+					<span className="text-xl">You have no published posts.</span>
+					<span className="text-lg">Let&apos;s fix this!</span>
 				</>
 			)}
 
 			{data &&
 				data.reverse().map((post) => (
-					<div key={post._id} className="relative border-4 rounded-lg border-emerald-800">
-						<span
-							className="text-red-500 font-black text-5xl absolute right-0 bottom-16 cursor-pointer "
-							onClick={() => handleRemove(post._id)}
-						>
-							X
-						</span>
+					<div key={post._id} className="relative border-4 rounded-r-lg border-emerald-800 max-w-full">
 						<ShortPostCard data={post} />
+						<button
+							onClick={() => handleRemove(post._id)}
+							className="absolute right-2 bottom-2 text-sm"
+							type="submit"
+						>
+							Remove
+						</button>
 					</div>
 				))}
 		</article>

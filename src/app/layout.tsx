@@ -22,7 +22,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		<ThemeProvider>
 			<AuthProvider>
 				<body
-					className={`${inter.className} container bg-neutral-950 text-neutral-300  dark:bg-neutral-300 dark:text-neutral-900 duration-1000`}
+					className={`${inter.className} 
+					container bg-neutral-300 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-300 duration-1000`}
 				>
 					<Header />
 					<main className="no-scrollbar">{children}</main>

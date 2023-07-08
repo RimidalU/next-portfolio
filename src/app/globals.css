@@ -6,11 +6,6 @@ html {
 	font-size: 20px;
 }
 
-html,
-body {
-	@apply w-screen h-screen;
-}
-
 a {
 	@apply no-underline text-inherit hover:text-orange-700 hover:underline underline-offset-8 decoration-emerald-800;
 }
@@ -27,7 +22,7 @@ button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
-	@apply self-center py-1 px-3 text-neutral-300 dark:hover:text-neutral-900 bg-emerald-800 rounded-md border-2 border-emerald-800 hover:bg-transparent hover:border-orange-700 hover:rounded-2xl;
+	@apply self-center py-1 px-3 text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-300 bg-emerald-800 rounded-md border-2 border-emerald-800 hover:bg-transparent hover:border-orange-700 hover:rounded-2xl;
 }
 
 form {
