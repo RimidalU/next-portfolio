@@ -57,6 +57,7 @@ export function HeaderNavigation() {
 			</nav>
 			<div className="lg:hidden flex flex-1 justify-end items-center">
 				<Image
+					className="cursor-pointer"
 					width={30}
 					height={30}
 					src={toggle ? "/close.svg" : "/menu.svg"}
