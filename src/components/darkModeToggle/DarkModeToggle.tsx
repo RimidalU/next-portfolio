@@ -9,7 +9,7 @@ export function DarkModeToggle() {
 
 	return (
 		<div
-			className="border-2 border-orange-700 rounded-2xl flex p-1 gap-2 content-center relative cursor-pointer"
+			className="border-2 border-orange-700 rounded-2xl flex w-[3.4rem] p-1 gap-2 content-center relative cursor-pointer"
 			onClick={handleDarkMode}
 		>
 			<div className="text-sm">🌙</div>
