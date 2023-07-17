@@ -1,11 +1,21 @@
 "use client";
 
 import { signOut, useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 import { DarkModeToggle } from "../darkModeToggle/DarkModeToggle";
+
+type NavLink = {
+	label: string;
+	href: string;
+};
+
+type Props = {
+	navLinks: NavLink[];
+};
 
 const links = [
 	{
@@ -42,17 +52,22 @@ const links = [
 
 export function HeaderNavigation() {
 	const session = useSession();
+	const pathname = usePathname();
+
 	const [toggle, setToggle] = useState(false);
 
 	return (
 		<>
 			<nav className="hidden lg:flex items-center gap-4">
 				<DarkModeToggle />
-				{links.map((link) => (
-					<Link key={link.id} href={link.url} className="flex">
-						{link.title}
-					</Link>
-				))}
+				{links.map((link) => {
+					const isActive = pathname === link.url;
+					return (
+						<Link key={link.id} href={link.url} className={`flex ${isActive ? "active" : ""}`}>
+							{link.title}
+						</Link>
+					);
+				})}
 				{session.status === "authenticated" && <button onClick={() => signOut()}>LogOut</button>}
 			</nav>
 			<div className="lg:hidden flex flex-1 justify-end items-center">
@@ -70,18 +85,21 @@ export function HeaderNavigation() {
 					} p-8 flex-col gap-4 bg-neutral-200 dark:bg-neutral-900 opacity-95 absolute top-16 right-0 mx-4 z-10 rounded-xl`}
 				>
 					{session.status === "authenticated" && <button onClick={() => signOut()}>LogOut</button>}
-					{links.map((link) => (
-						<Link
-							key={link.id}
-							href={link.url}
-							className="flex"
-							onClick={() => {
-								setToggle(!toggle);
-							}}
-						>
-							{link.title}
-						</Link>
-					))}
+					{links.map((link) => {
+						const isActive = pathname === link.url;
+						return (
+							<Link
+								key={link.id}
+								href={link.url}
+								className={`flex ${isActive ? "active" : ""}`}
+								onClick={() => {
+									setToggle(!toggle);
+								}}
+							>
+								{link.title}
+							</Link>
+						);
+					})}
 					<DarkModeToggle />
 				</div>
 			</div>

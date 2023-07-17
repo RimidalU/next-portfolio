@@ -7,7 +7,7 @@ html {
 }
 
 a {
-	@apply no-underline text-inherit hover:text-orange-700 hover:underline underline-offset-8 decoration-emerald-800;
+	@apply no-underline text-inherit hover:text-orange-700;
 }
 
 .container {
@@ -39,6 +39,10 @@ textarea {
 
 label {
 	@apply text-xl italic;
+}
+
+.active {
+	@apply text-orange-700 underline underline-offset-8 decoration-emerald-800;
 }
 
 @layer components {
