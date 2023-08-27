@@ -17,13 +17,16 @@ export const CONTACT_LINKS = [
 ];
 
 export type TContactsLink = {
-    id: number;
-    name: string;
-    url: string;
-}
+	id: number;
+	name: string;
+	url: string;
+};
 
 export const METADATA = {
 	CONTACTS: {
 		title: "Uladzimir Stankevich - Portfolio. | Contacts",
+	},
+	BLOG: {
+		title: "Uladzimir Stankevich - Portfolio. | Blog",
 	},
 };
