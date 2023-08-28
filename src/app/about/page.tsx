@@ -1,27 +1,22 @@
 import Image from "next/image";
-import Link from "next/link";
+
+import { UiLink } from "@/components/uikit";
 
 export const metadata = {
 	title: "Uladzimir Stankevich - Portfolio. | About",
 };
 
-export default function About() {
+export default function AboutPage() {
+	return <AboutPageLayout contactsLink={<ContactsLink />} />;
+}
+
+function AboutPageLayout({ contactsLink }: { contactsLink: JSX.Element }) {
 	return (
 		<section className="flex flex-col flex-1 gap-5">
 			<div className="w-full h-64 relative">
-				<Image
-					src="/etretat.jpg"
-					alt="My Étretat"
-					className="object-contain"
-					fill={true}
-				/>
-				<blockquote
-					className="paint-stroke"
-					cite="@Me)"
-				>
-					<h1>
-						&quot;If nothing happens, then something needs to be done about it...&quot;
-					</h1>
+				<Image src="/etretat.jpg" alt="My Étretat" className="object-contain" fill={true} />
+				<blockquote className="paint-stroke" cite="@Me)">
+					<h1>&quot;If nothing happens, then something needs to be done about it...&quot;</h1>
 				</blockquote>
 			</div>
 			<section className="flex gap-10 text-justify">
@@ -42,9 +37,7 @@ export default function About() {
 						quasi architecto, accusamus quibusdam tenetur? Aperiam culpa impedit fugit quaerat ut incidunt amet
 						quod ducimus commodi.
 					</p>
-					<Link href="contacts" className="hover:no-underline mt-3 self-center">
-						<button>Contacts</button>
-					</Link>
+					{contactsLink}
 				</article>
 				<article className="flex-1 flex flex-col gap-5">
 					<h2 className="title-text">what I do?</h2>
@@ -67,5 +60,13 @@ export default function About() {
 				</article>
 			</section>
 		</section>
+	);
+}
+
+function ContactsLink() {
+	return (
+		<UiLink href="contacts" className="hover:no-underline mt-3 self-center">
+			<button>Contacts</button>
+		</UiLink>
 	);
 }
