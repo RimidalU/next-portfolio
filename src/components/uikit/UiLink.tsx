@@ -14,7 +14,7 @@ export function UiLink({
 		<Link
 			href={href}
 			target="blank"
-			className={clsx("no-underline text-inherit hover:text-orange-700", className)}
+			className={clsx("no-underline text-inherit hover:text-orange-700 transition-colors", className)}
 		>
 			{children}
 		</Link>
