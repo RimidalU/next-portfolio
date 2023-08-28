@@ -52,7 +52,7 @@ const links = [
 
 export function HeaderNavigation() {
 	const session = useSession();
-	const pathname = usePathname();
+	const pathname = usePathname().split('/')[1];
 
 	const [toggle, setToggle] = useState(false);
 
@@ -61,7 +61,7 @@ export function HeaderNavigation() {
 			<nav className="hidden lg:flex items-center gap-4">
 				<DarkModeToggle />
 				{links.map((link) => {
-					const isActive = pathname === link.url;
+					const isActive = `/${pathname}` === link.url;
 					return (
 						<Link key={link.id} href={link.url} className={`flex ${isActive ? "active" : ""}`}>
 							{link.title}
