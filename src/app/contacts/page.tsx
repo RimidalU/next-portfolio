@@ -4,7 +4,7 @@ import { ContactForm } from "@/components/contactForm/ContactForm";
 
 import { CONTACT_LINKS, METADATA, TContactsLink } from "@/constants";
 
-export const metadata = METADATA.CONTACTS;
+export const metadata = {title: METADATA.CONTACTS};
 
 export default function ContactsPage() {
 	return (

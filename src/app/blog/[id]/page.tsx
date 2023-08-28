@@ -1,4 +1,6 @@
 import { FullPostCard } from "@/components/fullPostCard/FullPostCard";
+
+import { METADATA } from "@/constants";
 import { IPost } from "@/types";
 
 type Props = {
@@ -18,12 +20,13 @@ async function getData(id: string) {
 
 export async function generateMetadata({ params }: Props) {
 	const post: IPost = await getData(params.id);
+
 	return {
-		title: `Uladzimir Stankevich - Portfolio. | Blog | ${post.title}`,
+		title: `${METADATA.BLOG} | ${post.title}`,
 	};
 }
 
-export default async function BlogPost({ params }: Props) {
+export default async function BlogPostPage({ params }: Props) {
 	const post: IPost = await getData(params.id);
 
 	return <FullPostCard post={post} />;

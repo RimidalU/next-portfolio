@@ -23,10 +23,6 @@ export type TContactsLink = {
 };
 
 export const METADATA = {
-	CONTACTS: {
-		title: "Uladzimir Stankevich - Portfolio. | Contacts",
-	},
-	BLOG: {
-		title: "Uladzimir Stankevich - Portfolio. | Blog",
-	},
+	CONTACTS: "Uladzimir Stankevich - Portfolio. | Contacts",
+	BLOG: "Uladzimir Stankevich - Portfolio. | Blog",
 };

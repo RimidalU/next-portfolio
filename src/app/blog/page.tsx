@@ -14,7 +14,7 @@ async function getData() {
 	return res.json();
 }
 
-export const metadata = METADATA.BLOG;
+export const metadata = {title: METADATA.BLOG};
 
 export default async function BlogPage() {
 	const posts: Partial<IPost>[] = await getData();
