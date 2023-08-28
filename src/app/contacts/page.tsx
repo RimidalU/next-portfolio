@@ -1,18 +1,34 @@
-import Link from "next/link";
-
 import { ContactForm } from "@/components/contactForm/ContactForm";
 
-import { CONTACT_LINKS, METADATA, TContactsLink } from "@/constants";
+import { UiLink } from "@/components/uikit";
 
-export const metadata = {title: METADATA.CONTACTS};
+import { METADATA } from "@/constants";
+
+export const metadata = { title: METADATA.CONTACTS };
+
+export const CONTACT_LINKS = [
+	{
+		id: 1,
+		name: "email me",
+		url: "mailto:stankevichuuladimiru@gmail.com?subject=Fast%20message%20from%20my%20CV.",
+	},
+	{
+		id: 2,
+		name: "linkedin",
+		url: "https://www.linkedin.com/in/uladzimir-stankevich/",
+	},
+	{
+		id: 3,
+		name: "GitHab",
+		url: "https://github.com/RimidalU",
+	},
+];
 
 export default function ContactsPage() {
 	return (
 		<ContactsPageLayout
+			links={<ContactLinksSet links={CONTACT_LINKS} />}
 			contactForm={<ContactForm />}
-			links={CONTACT_LINKS.map((link) => {
-				return <ContactLink key={link.id} link={link} />;
-			})}
 		/>
 	);
 }
@@ -21,7 +37,7 @@ function ContactsPageLayout({
 	links,
 	contactForm,
 }: {
-	links: JSX.Element[];
+	links: JSX.Element;
 	contactForm: JSX.Element;
 }) {
 	return (
@@ -35,10 +51,12 @@ function ContactsPageLayout({
 	);
 }
 
-function ContactLink({ link }: { link: TContactsLink }) {
-	return (
-		<Link href={link.url} target="blank" className="capitalize text-center">
-			{link.name}
-		</Link>
-	);
+function ContactLinksSet({ links }: { links: typeof CONTACT_LINKS }) {
+	return links.map((link) => {
+		return (
+			<UiLink key={link.id} href={link.url} className="capitalize text-center">
+				{link.name}
+			</UiLink>
+		);
+	});
 }
