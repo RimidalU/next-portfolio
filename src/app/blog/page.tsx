@@ -6,22 +6,26 @@ import { METADATA } from "@/constants";
 import { IPost } from "@/types";
 
 async function getData() {
-	const res = await fetch(`${process.env.HOST_URL}api/posts`, { cache: "no-store" });
+	try {
+		const res = await fetch(`${process.env.HOST_URL}api/posts`, { cache: "no-store" });
 
-	if (!res.ok) {
-		throw new Error("Filed to fetch data");
+		if (!res.ok) {
+			throw new Error("Filed to fetch data");
+		}
+		return res.json();
+	} catch (error) {
+		return null;
 	}
-	return res.json();
 }
 
-export const metadata = {title: METADATA.BLOG};
+export const metadata = { title: METADATA.BLOG };
 
 export default async function BlogPage() {
 	let posts: Partial<IPost>[] = await getData();
 
 	return (
 		<BlogPageLayout
-			posts={ posts.map((post) => {
+			posts={posts && posts.map((post) => {
 				return (
 					<PostLink key={post._id} post={post}>
 						<ShortPostCard data={post} />
