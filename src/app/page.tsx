@@ -35,7 +35,9 @@ function HomePageLayout({
 function ResumeLink() {
 	return (
 		<Link
-			href={"/"}
+			href={"/Uladzimir_Stankevich_Full-Stack_Developer_Resume.pdf"}
+			target="_blank"
+			rel="noopener noreferrer"
 			className="
 			    inline-block w-fit border-2 py-2 px-4 rounded-lg border-orange-700
 			    hover:rounded-2xl hover:border-emerald-800 inherit"
