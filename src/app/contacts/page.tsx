@@ -6,7 +6,7 @@ import { METADATA } from "@/constants";
 
 export const metadata = { title: METADATA.CONTACTS };
 
-export const CONTACT_LINKS = [
+const CONTACT_LINKS = [
 	{
 		id: 1,
 		name: "email me",
