@@ -17,11 +17,11 @@ async function getData() {
 export const metadata = {title: METADATA.BLOG};
 
 export default async function BlogPage() {
-	const posts: Partial<IPost>[] = await getData();
+	let posts: Partial<IPost>[] = await getData();
 
 	return (
 		<BlogPageLayout
-			posts={posts.map((post) => {
+			posts={ posts.map((post) => {
 				return (
 					<PostLink key={post._id} post={post}>
 						<ShortPostCard data={post} />
